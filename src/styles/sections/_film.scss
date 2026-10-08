@@ -1,0 +1,93 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+$film-ratio: 1.1;
+
+.film {
+  display: grid;
+  margin-top: $space-l;
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: $space-xl;
+  }
+
+  &__video {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1.1;
+    background-color: #000;
+
+    @include respond-to('tablet') {
+      aspect-ratio: $film-ratio;
+    }
+
+    iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+
+  &__cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.85);
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.08);
+    }
+  }
+
+
+  &__media {
+    display: none;
+
+    @include respond-to('tablet') {
+      position: relative;
+      display: block;
+      aspect-ratio: $film-ratio;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__cast {
+    position: absolute;
+    top: $space-m;
+    left: $space-m;
+    color: #fff;
+    font-size: 0.5rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__more {
+    padding: $space-xl $container-padding;
+
+    @include respond-to('tablet') {
+      display: none;
+    }
+  }
+}

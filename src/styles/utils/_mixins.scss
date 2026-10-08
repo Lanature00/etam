@@ -1,0 +1,13 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+$breakpoints: (
+  'tablet': $breakpoint-tablet,
+  'desktop': $breakpoint-desktop,
+);
+
+@mixin respond-to($name) {
+  @media (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}

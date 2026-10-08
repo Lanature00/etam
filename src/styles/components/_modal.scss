@@ -1,0 +1,62 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.modal {
+  width: min(480px, calc(100% - 2 * #{$container-padding}));
+  max-height: calc(100dvh - 2 * #{$container-padding});
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background-color: #fff;
+  color: $text-color;
+
+  &::backdrop {
+    background-color: $color-overlay;
+  }
+
+  &__box {
+    position: relative;
+    padding: $space-xl $container-padding $space-l;
+
+    @include respond-to('tablet') {
+      padding: $space-xl;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: $space-s;
+    right: $space-m;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  &__title {
+    margin-bottom: $space-s;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  &__intro {
+    margin-bottom: $space-l;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  &__success {
+    padding: $space-l 0;
+    text-align: center;
+  }
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+  &.is-success {
+    .modal__title,
+    .modal__intro,
+    .form {
+      display: none;
+    }
+  }

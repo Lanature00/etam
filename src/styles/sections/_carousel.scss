@@ -1,0 +1,65 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.carousel {
+  position: relative;
+  padding-left: $space-m;
+  padding-bottom: $space-xl * 2;
+
+  @include respond-to('desktop') {
+    padding-left: 7.5vw;
+  }
+
+  &__track {
+    display: flex;
+    gap: $space-s;
+    overflow-x: auto;
+    scrollbar-width: none;
+    cursor: grab;
+    touch-action: pan-x pan-y;
+    user-select: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.is-dragging {
+      cursor: grabbing;
+    }
+  }
+  
+  &__slide {
+    flex: 0 0 85%;
+
+    @include respond-to('tablet') {
+      flex-basis: 22vw;
+    }
+
+    img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      pointer-events: none;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    top: calc(50% - #{$space-xl} / 2);
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.85);
+    font-size: 1.5rem;
+    line-height: 1;
+
+    &--prev {
+      left: $space-m;
+    }
+
+    &--next {
+      right: $space-m;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.intro {
+  padding: $space-xl $container-padding;
+  background-color: $color-intro-bg;
+
+  @include respond-to('tablet') {
+    text-align: center;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: $space-m;
+    max-width: 640px;
+    margin-inline: auto;
+    font-size: 1rem;
+
+    @include respond-to('tablet') {
+      font-size: 0.75rem;
+    }
+  }
+
+  &__more {
+    display: none;
+
+    @include respond-to('tablet') {
+      display: block;
+    }
+  }
+
+  &__link {
+    align-self: flex-start;
+    margin-top: $space-m;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-decoration: underline;
+
+    @include respond-to('tablet') {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@use '../utils/variables' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-m;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+
+    input:not([type='checkbox']) {
+      padding: $space-s $space-m;
+      border: 1px solid $text-color;
+      background-color: #fff;
+
+      &[aria-invalid='true'] {
+        border-color: $color-error;
+      }
+    }
+
+    &--check {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 0 $space-s;
+
+      .form__error {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  &__error {
+    min-height: 1em;
+    font-size: 0.75rem;
+    color: $color-error;
+  }
+}

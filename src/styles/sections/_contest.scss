@@ -1,0 +1,42 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.contest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-m;
+  padding: $space-xl $container-padding;
+  background-color: $color-grey;
+  text-align: center;
+
+  @include respond-to('desktop') {
+    padding-block: $space-xl * 1.5;
+  }
+
+  &__title {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    @include respond-to('desktop') {
+      font-size: 2.25rem;
+    }
+  }
+
+  &__text,
+  &__strong {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__strong {
+    font-weight: 600;
+    line-height: 1.8;
+  }
+
+  .button {
+    margin-top: $space-s;
+  }
+}

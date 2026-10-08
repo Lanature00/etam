@@ -1,0 +1,140 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  color: #fff;
+  transition: background-color 0.3s;
+
+  &.is-scrolled {
+    background-color: $color-primary;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-m $container-padding;
+
+    @include respond-to('desktop') {
+      gap: $space-l;
+      justify-content: flex-start;
+      padding: $space-m $space-xl;
+    }
+  }
+
+  &__logo {
+    display: none;
+
+    @include respond-to('desktop') {
+      display: block;
+    }
+
+    img {
+      width: 100px;
+    }
+  }
+
+  &__burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 24px;
+
+    span {
+      height: 2px;
+      background-color: currentColor;
+    }
+
+    @include respond-to('desktop') {
+      display: none;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-l;
+    padding: $space-l $container-padding;
+    background-color: $color-primary;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity 0.3s,
+      visibility 0.3s;
+
+    &.is-open {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    @include respond-to('desktop') {
+      position: static;
+      flex-direction: row;
+      align-items: center;
+      flex: 1;
+      gap: $space-l;
+      padding: 0;
+      background: none;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-m;
+
+    @include respond-to('desktop') {
+      flex-direction: row;
+      gap: $space-l;
+    }
+  }
+
+  &__list a {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__search {
+    @include respond-to('desktop') {
+      margin-left: auto;
+    }
+
+    input {
+      width: 100%;
+      padding: $space-s $space-m;
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      font-size: 0.75rem;
+
+      @include respond-to('desktop') {
+        width: 220px;
+      }
+
+      &::placeholder {
+        color: #fff;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-m;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@use '../utils/variables' as *;
+
+.button {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  &--filled {
+    padding: $space-m $space-l;
+    background-color: $text-color;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $color-primary;
+    }
+  }
+}
