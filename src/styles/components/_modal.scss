@@ -1,5 +1,5 @@
-@use '../utils/variables' as *;
-@use '../utils/mixins' as *;
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
 
 .modal {
   width: min(480px, calc(100% - 2 * #{$container-padding}));
@@ -18,7 +18,7 @@
     position: relative;
     padding: $space-xl $container-padding $space-l;
 
-    @include respond-to('tablet') {
+    @include respond-to("tablet") {
       padding: $space-xl;
     }
   }
@@ -47,12 +47,6 @@
     padding: $space-l 0;
     text-align: center;
   }
-}
-
-body.is-locked {
-  overflow: hidden;
-}
-
   &.is-success {
     .modal__title,
     .modal__intro,
@@ -60,3 +54,8 @@ body.is-locked {
       display: none;
     }
   }
+}
+
+body.is-locked {
+  overflow: hidden;
+}
